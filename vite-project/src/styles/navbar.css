@@ -1,0 +1,51 @@
+.navbar-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 15px 20px;
+  background-color: var(--color-dark);
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.navbar-brand h3 {
+  font-size: 1.25rem;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+}
+
+.navbar-links {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.85rem;
+  color: #94a3b8;
+  border-top: 1px solid #334155;
+  padding-top: 10px;
+}
+
+.navbar-status {
+  color: #38bdf8;
+  font-weight: 600;
+}
+
+/* Ajustes de Escritorio */
+@media (min-width: 768px) {
+  .navbar-container {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+  }
+  
+  .navbar-links {
+    border-top: none;
+    padding-top: 0;
+    gap: 20px;
+  }
+}

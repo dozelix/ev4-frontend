@@ -1,0 +1,26 @@
+.hero-container {
+  position: relative;
+  height: 180px;
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-left: 40px;
+  color: #ffffff;
+  border-bottom: 4px solid #0284c7;
+}
+
+.hero-container h1 {
+  margin: 0 0 8px 0;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.hero-container p {
+  margin: 0;
+  color: #e2e8f0;
+  max-width: 600px;
+  font-size: 14px;
+  line-height: 1.5;
+}

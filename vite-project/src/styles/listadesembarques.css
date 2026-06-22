@@ -1,0 +1,157 @@
+/* Vista Móvil: Convertir filas en tarjetas independientes */
+.table-responsive-container {
+  width: 100%;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  display: block; /* Desactiva el comportamiento rígido de tabla */
+}
+
+.table-header {
+  display: none; /* Oculta las cabeceras en celulares (no caben) */
+}
+
+.custom-table tbody {
+  display: block;
+}
+
+/* Estilos de cada fila transformada en tarjeta móvil */
+.custom-table tr {
+  display: block;
+  background-color: var(--bg-surface);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 16px;
+  margin-bottom: 16px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.02);
+  transition: var(--transition);
+}
+
+/* Inyectar etiquetas simuladas para simular la columna (A11Y visual) */
+.custom-table td {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 8px 0;
+  border-bottom: 1px dashed var(--color-border);
+  font-size: 0.95rem;
+  text-align: right;
+}
+
+.custom-table td:last-child {
+  border-bottom: none;
+  padding-top: 12px;
+  justify-content: center;
+}
+
+/* Generar texto identificatorio a la izquierda usando selectores CSS modernos */
+.custom-table td::before {
+  content: attr(data-label); /* Lee la propiedad asignada en el HTML */
+  font-weight: 600;
+  color: var(--text-muted);
+  text-align: left;
+}
+
+/* ==========================================================================
+   Comportamiento en Escritorio: Volver a formato de Tabla Tradicional
+   ========================================================================== */
+@media (min-width: 768px) {
+  .custom-table {
+    display: table;
+  }
+  
+  .table-header {
+    display: table-header-group; /* Muestra los títulos */
+    background-color: #f1f5f9;
+  }
+  
+  .table-header th {
+    padding: 14px 16px;
+    font-weight: 600;
+    text-align: left;
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 2px solid var(--color-border);
+  }
+
+  .custom-table tbody {
+    display: table-row-group;
+  }
+
+  .custom-table tr {
+    display: table-row;
+    margin-bottom: 0;
+    border: none;
+  }
+
+  .custom-table tr:hover {
+    background-color: #f8fafc;
+  }
+
+  .custom-table td {
+    display: table-cell;
+    padding: 14px 16px;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+    font-size: 0.9rem;
+  }
+
+  .custom-table td::before {
+    display: none; /* Elimina las etiquetas repetitivas del móvil */
+  }
+}
+
+/* Badges de Estado Elásticos con alto contraste (A11Y) */
+.badge {
+  padding: 4px 10px;
+  border-radius: 50px;
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  display: inline-block;
+}
+
+.badge-procesado { background-color: var(--status-processed-bg); color: var(--status-processed-text); }
+.badge-pendiente { background-color: var(--status-pending-bg); color: var(--status-pending-text); }
+.badge-rechazado { background-color: var(--status-rejected-bg); color: var(--status-rejected-text); }
+
+/* Fila Prioritaria */
+.row-priority {
+  background-color: #fffbeb !important;
+}
+@media (min-width: 768px) {
+  .row-priority { background-color: #fffdf5 !important; }
+}
+
+/* Botón de Acciones Accesible */
+.btn-priority {
+  cursor: pointer;
+  background-color: #ffffff;
+  border: 1px solid #cbd5e1;
+  border-radius: var(--radius-sm);
+  padding: 8px 16px;
+  font-size: 0.875rem;
+  font-weight: 500;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: var(--transition);
+  min-height: 38px; /* Tamaño de botón amigable para pulsación táctil */
+}
+
+.btn-priority:hover {
+  background-color: #f1f5f9;
+  border-color: #94a3b8;
+}
+
+.btn-priority.active {
+  background-color: var(--priority-bg);
+  border-color: #f59e0b;
+  color: #78350f;
+  font-weight: 600;
+}

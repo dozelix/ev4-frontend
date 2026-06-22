@@ -1,0 +1,89 @@
+.app-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.dashboard-main {
+  flex: 1;
+  padding: 16px; /* Layout compacto en móviles */
+}
+
+/* Caja de Filtro */
+.filter-box {
+  margin-bottom: 20px;
+  padding: 16px;
+  background-color: var(--bg-surface);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--color-border);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.filter-box label {
+  font-weight: 600;
+  color: var(--text-main);
+  font-size: 0.95rem;
+}
+
+.filter-input {
+  padding: 12px; /* Área de toque óptima para móviles (mínimo 44px de alto) */
+  width: 100%;   /* Ocupa todo el ancho en móvil */
+  border-radius: var(--radius-sm);
+  border: 1px solid #cbd5e1;
+  font-size: 1rem;
+  transition: var(--transition);
+}
+
+.filter-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 1px var(--color-primary);
+}
+
+.filter-info {
+  font-size: 0.875rem;
+  color: var(--text-muted);
+}
+
+.filter-highlight {
+  color: var(--color-primary);
+}
+
+/* Contenedores de Estado */
+.status-msg {
+  padding: 30px 0;
+  text-align: center;
+  color: var(--text-muted);
+  font-weight: 500;
+}
+
+.error-box {
+  padding: 16px;
+  background-color: #fef2f2;
+  color: #991b1b;
+  border-radius: var(--radius-md);
+  border: 1px solid #fca5a5;
+  font-weight: 500;
+}
+
+/* ==========================================================================
+   Media Queries para Escritorio (Diseño Adaptativo R2)
+   ========================================================================== */
+@media (min-width: 768px) {
+  .dashboard-main {
+    padding: 30px 40px; /* Más espacio en pantallas grandes */
+  }
+
+  .filter-box {
+    flex-direction: row;
+    align-items: center;
+    gap: 15px;
+    padding: 20px;
+  }
+
+  .filter-input {
+    width: 320px; /* Ancho controlado en PC */
+  }
+}

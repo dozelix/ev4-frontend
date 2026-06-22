@@ -1,0 +1,19 @@
+.footer-container {
+  background-color: #1e293b;
+  color: #94a3b8;
+  text-align: center;
+  padding: 15px 20px;
+  font-size: 13px;
+  margin-top: auto; /* Empuja el footer al fondo si hay pocas filas */
+  border-top: 1px solid #334155;
+}
+
+.footer-container p {
+  margin: 0 0 5px 0;
+}
+
+.footer-sub {
+  margin: 0 !important;
+  font-size: 11px;
+  color: #64748b;
+}

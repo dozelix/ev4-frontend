@@ -1,0 +1,68 @@
+### [22-06-2026] Configuración de Estructura Base y Consumo de API (R3 y R6)
+- **Avance realizado:** Migración exitosa del entorno de desarrollo a `npm` debido a restricciones de permisos en el laboratorio. Se configuró el archivo `package.json` con los scripts para Vite y `json-server`.
+- **Seguridad e Integración (R6):** Se implementó la variable de entorno `import.meta.env.VITE_API_URL` en un archivo `.env.local` para evitar exponer la URL del servicio en el código fuente.
+- **Consumo de datos (R3):** Se programó un hook `useEffect` en `App.jsx` utilizando funciones asíncronas (`async/await`) y manejo robusto de estados para controlar de manera segura los escenarios de "Cargando" y "Error de conexión", evitando pantallas en blanco en la SPA.
+
+### [22-06-2026] Análisis Técnico: Selección de Herramienta para Consumo de API (R3)
+- **Avance realizado:** Se analizó el funcionamiento de Axios y Fetch para la integración de la API REST. Se comprendió la importancia del manejo de promesas con `async/await` dentro del ciclo de vida de React (`useEffect`).
+- **Justificación de diseño:** Se evaluó el uso de Axios por su capacidad de disparar excepciones automáticas ante respuestas de error HTTP (códigos 4xx y 5xx) y la transformación automática de datos a formato JSON, lo cual optimiza la legibilidad del código y refuerza las buenas prácticas en el manejo seguro de errores (R3).
+
+### [22-06-2026] Creación de Componentes y Modularización del Panel (R2)
+- **Avance realizado:** Se instaló e incorporó la librería `axios` para la gestión de las peticiones HTTP de forma segura. Se crearon los componentes modulares `ListaDesembarques` y `FilaDesembarque` dentro de la estructura de carpetas del proyecto.
+- **Flujo de Componentes (R2):** La aplicación ahora distribuye de manera correcta la información mediante `props` desde el componente principal `App` hacia componentes hijos especializados, logrando renderizar de forma dinámica una tabla con el total de capturas, respetando los principios de modularidad de las arquitecturas SPA.
+
+### [22-06-2026] Resolución de Conflictos de Dependencias Npm (ERESOLVE)
+- **Avance realizado:** Se identificó un bloqueo en el gestor de paquetes `npm` debido a un conflicto de dependencias pares (`peerDependencies`) entre las versiones instaladas de Vite y el plugin oficial de React.
+- **Solución aplicada:** Se procedió a mitigar el conflicto utilizando la bandera `--legacy-peer-deps` para forzar la instalación correcta de los paquetes de comunicación HTTP, garantizando la continuidad del desarrollo del panel web en la infraestructura del laboratorio.
+
+### [22-06-2026] Implementación de Persistencia Local con Local Storage (R4)
+- **Avance realizado:** Se descartó el uso de la librería Axios debido a conflictos de red/versiones en el laboratorio, optando por una arquitectura nativa basada en `fetch` con validaciones de respuesta (`respuesta.ok`).
+- **Persistencia de Datos (R4):** Se integró el almacenamiento local (`localStorage`) mediante un estado inicializador flojo (lazy initializer) en el componente `App`. Se programó un efecto secundario (`useEffect`) sincronizado con el estado de registros prioritarios, permitiendo que las marcas de urgencia configuradas por el operador de Pesquera Talcahuano Sur SpA persistan de manera íntegra tras recargar el navegador.
+
+### [22-06-2026] Implementación de Control de Entrada y Filtros Saneados (R5 y R6)
+- **Avance realizado:** Se diseñó e incorporó un módulo de filtrado reactivo en tiempo real que permite al operador discriminar registros simultáneamente por especie o por estado operativo.
+- **Seguridad Aplicada (R5 y R6):** Con el fin de no confiar en datos crudos procedentes del cliente, se implementó una función de sanitización (`sanearEntrada`) encargada de limpiar y remover metacaracteres peligrosos (como `<` y `>`). Esto mitiga vulnerabilidades asociadas a la inyección de scripts maliciosos (Cross-Site Scripting - XSS) antes de interactuar con las propiedades del modelo de datos de la pesquera.
+
+### [22-06-2026] Documentación Institucional y Análisis de Calidad Final (R1 y R7)
+- **Avance realizado:** Finalización exitosa del software para Pesquera Talcahuano Sur SpA. Se redactó y estructuró el archivo de entrega obligatoria `LEEME.md`.
+- **Calidad de Código (R1 y R7):** Se auditaron las buenas prácticas exigidas a través del análisis de Sonar. Se registraron formalmente los componentes modulares estructurados y se justificaron técnicamente las recomendaciones de la Inteligencia Artificial (manejo de estados eficientes y sanitización preventiva XSS), dejando el proyecto listo para el empaquetado y entrega final en la plataforma.
+
+### [22-06-2026] Documentación Institucional y Análisis de Calidad Final (R1 y R7)
+- **Avance realizado:** Finalización exitosa del software para Pesquera Talcahuano Sur SpA. Se redactó y estructuró el archivo de entrega obligatoria `LEEME.md`.
+- **Calidad de Código (R1 y R7):** Se auditaron las buenas prácticas exigidas a través del análisis de Sonar. Se registraron formalmente los componentes modulares estructurados y se justificaron técnicamente las recomendaciones de la Inteligencia Artificial (manejo de estados eficientes y sanitización preventiva XSS), dejando el proyecto listo para el empaquetado y entrega final en la plataforma.
+
+### [22-06-2026] Reestructuración de Directorios y Despliegue de Mock API
+- **Avance realizado:** Se ordenó la arquitectura del espacio de trabajo del laboratorio. Se ubicó el archivo de variables de entorno `.env.local` en el directorio de compilación de Vite y se creó manualmente el archivo de persistencia `db.json` con el set de datos de desembarques pesqueros entregado.
+- **Configuración de Entorno:** Se logró la separación limpia del entorno cliente (React) mediante la ejecución segmentada en terminales de VS Code, inicializando con éxito el servidor local de datos en el puerto 3001 de manera simultánea con el servidor de desarrollo de la SPA.
+
+### [22-06-2026] Inyección de Variables de Entorno en el Entorno Local (R6)
+- **Avance realizado:** Se creó e integró el archivo de configuración `.env.local` dentro del directorio raíz de Vite (`vite-project`). 
+- **Cumplimiento de Seguridad (R6):** Se definió la variable `VITE_API_URL` apuntando al puerto local 3001. Con esto se cumple la directiva de desarrollo seguro al desacoplar la dirección del servicio de la lógica del código fuente, permitiendo modificaciones de infraestructura sin alterar los componentes funcionales de la SPA.
+
+### [22-06-2026] Sincronización de Entorno y Resolución de Rutas de Configuración
+- **Avance realizado:** Se auditó la estructura jerárquica del espacio de trabajo en VS Code mediante inspección visual del árbol de directorios. Se detectó un aislamiento en las variables de entorno al encontrarse el archivo `.env.local` fuera del contexto de ejecución de Vite.
+- **Solución Estructural:** Se reubicó el archivo `.env.local` al interior del subdirectorio `vite-project` (alineado con `package.json`), asegurando la correcta inyección de la variable de entorno `VITE_API_URL`. El archivo `db.json` se mantuvo en la raíz del repositorio para centralizar el servicio de datos ficticio de la pesquera de forma paralela sin interferir en los assets de compilación del frontend.
+
+### [22-06-2026] Descomposición Arquitectónica y Diseño del Dashboard Corporativo (R2)
+- **Avance realizado:** Se refactorizó la estructura del archivo central `App.jsx` para elevar la madurez visual y semántica del panel. Se crearon tres nuevos componentes modulares e independientes: `Navbar`, `Hero` y `Footer`.
+- **Integración Estética y Modular:** El componente `Hero` carga de manera exitosa el asset local `hero.png` mediante importaciones de empaquetado de Vite. Se consolidó el diseño usando contenedores flexibles (`flexbox`) y semántica de HTML5 (`<nav>`, `<main>`, `<footer>`), logrando una SPA con estándar de producción institucional sin alterar los ganchos de estado ni las funciones seguras de sanitización de datos.
+
+### [22-06-2026] Desacoplamiento de Estilos y Modularización con Arquitectura CSS
+- **Avance realizado:** Se eliminaron por completo las definiciones de diseño incrustadas (*inline styles*) de los archivos JSX, trasladando las reglas de presentación a hojas de estilo externas e independientes.
+- **Mantenibilidad y Calidad (R7):** Se crearon los archivos individuales `Navbar.css`, `Hero.css` y `Footer.css` en el directorio de estilos, vinculándolos formalmente mediante la propiedad `className`. Esta separación reduce los *code smells* estructurales identificados por SonarLint, optimiza la legibilidad del código del dashboard y respeta las pautas corporativas de Pesquera Talcahuano Sur SpA.
+
+### [22-06-2026] Rediseño Responsivo Mobile-First y Auditoría de Accesibilidad (R2, R6 y R7)
+- **Avance realizado:** Refactorización total de la capa de presentación adoptando una metodología Mobile-First estricta y reemplazando estilos absolutos por propiedades personalizadas de CSS (*CSS Variables*).
+- **Adaptabilidad y Accesibilidad (A11Y):** Se reestructuró el componente de visualización de datos usando técnicas modernas de CSS para mutar la tabla (`<table>`) de un listado de tarjetas apiladas en dispositivos móviles a una grilla tradicional en pantallas de escritorio mediante consultas de medios (`@media`). Se inyectaron atributos `aria-pressed` y `aria-label` para asegurar la navegación inclusiva mediante lectores de pantalla, solucionando potenciales observaciones de semántica y contraste evaluadas por SonarLint.
+
+### [22-06-2026] Centralización de Estilos mediante un Compositor CSS Global
+- **Avance realizado:** Se eliminaron las importaciones directas con rutas relativas engorrosas de cada archivo JSX, delegando el control de presentación a un indexador central.
+- **Optimización de Arquitectura (R2 y R7):** Se creó el archivo maestro `src/styles/main.css` utilizando la directiva `@import` para acoplar las hojas de estilo en un único punto de entrada. Este compositor se integró directamente en el flujo de empaquetado de Vite dentro de `main.jsx`, reduciendo drásticamente la duplicidad de llamadas, aislando el código lógico del diseño y facilitando futuras refactorizaciones o migraciones de componentes.
+
+### [22-06-2026] Centralización de Estilos mediante un Compositor CSS Global
+- **Avance realizado:** Se eliminaron las importaciones directas con rutas relativas engorrosas de cada archivo JSX, delegando el control de presentación a un indexador central.
+- **Optimización de Arquitectura (R2 y R7):** Se creó el archivo maestro `src/styles/main.css` utilizando la directiva `@import` para acoplar las hojas de estilo en un único punto de entrada. Este compositor se integró directamente en el flujo de empaquetado de Vite dentro de `main.jsx`, reduciendo drásticamente la duplicidad de llamadas, aislando el código lógico del diseño y facilitando futuras refactorizaciones o migraciones de componentes.
+
+### [22-06-2026] Debug de Ciclos de Renderizado y Control de Fallas de Infraestructura
+- **Avance realizado:** Se ejecutó un proceso exhaustivo de depuración (*debug*) sobre el componente central `App.jsx`, corrigiendo una excepción por referencia no definida (`ReferenceError`) mediante el restablecimiento de la importación del componente de la grilla de datos.
+- **Robustez del Sistema (R6):** Se incorporó un bloque lógico de resguardo condicional (`else`) en el hook de carga asíncrona. Esto evita estados de bloqueo indefinidos en la interfaz si la variable de entorno muta o falla, desplegando un diagnóstico inmediato en pantalla y asegurando un correcto manejo de errores según la rúbrica institucional.

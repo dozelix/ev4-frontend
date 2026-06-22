@@ -1,0 +1,13 @@
+/* src/styles/main.css */
+
+/* 1. Base y Variables Globales */
+@import './index.css';
+
+/* 2. Estilos de la Estructura General */
+@import './app.css';
+
+/* 3. Estilos de Componentes Modulares */
+@import './navbar.css';
+@import './hero.css';
+@import './listaDesembarques.css';
+@import './footer.css';
