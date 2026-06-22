@@ -66,3 +66,8 @@
 ### [22-06-2026] Debug de Ciclos de Renderizado y Control de Fallas de Infraestructura
 - **Avance realizado:** Se ejecutó un proceso exhaustivo de depuración (*debug*) sobre el componente central `App.jsx`, corrigiendo una excepción por referencia no definida (`ReferenceError`) mediante el restablecimiento de la importación del componente de la grilla de datos.
 - **Robustez del Sistema (R6):** Se incorporó un bloque lógico de resguardo condicional (`else`) en el hook de carga asíncrona. Esto evita estados de bloqueo indefinidos en la interfaz si la variable de entorno muta o falla, desplegando un diagnóstico inmediato en pantalla y asegurando un correcto manejo de errores según la rúbrica institucional.
+
+### [22-06-2026] Aseguramiento del Manifiesto de Dependencias y Cierre de Brechas (R6)
+- **Avance realizado:** Se auditó y reestructuró el archivo de configuración `package.json` previo a su publicación en el repositorio público de GitHub.
+- **Seguridad en Cadena de Suministro (R6):** Se removieron los selectores dinámicos (`^`) para fijar de manera estricta las versiones de React y las herramientas de compilación, mitigando ataques por inyección de código de terceros. Asimismo, se integró formalmente `json-server` al árbol de dependencias de desarrollo para asegurar la trazabilidad del ecosistema por parte de herramientas automáticas de control de vulnerabilidades (Dependabot).
+
