@@ -71,3 +71,27 @@
 - **Avance realizado:** Se auditó y reestructuró el archivo de configuración `package.json` previo a su publicación en el repositorio público de GitHub.
 - **Seguridad en Cadena de Suministro (R6):** Se removieron los selectores dinámicos (`^`) para fijar de manera estricta las versiones de React y las herramientas de compilación, mitigando ataques por inyección de código de terceros. Asimismo, se integró formalmente `json-server` al árbol de dependencias de desarrollo para asegurar la trazabilidad del ecosistema por parte de herramientas automáticas de control de vulnerabilidades (Dependabot).
 
+### [22-06-2026] Migración de Motor de Paquetes a pnpm y Purga de Entornos
+- **Avance realizado:** Se realizó una limpieza total en la máquina de desarrollo, desinstalando por completo los gestores residuales FNM y NVM junto con sus respectivos árboles de almacenamiento global y configuraciones en el archivo `.bashrc`.
+- **Modernización del Ecosistema (R2):** Se adoptó de forma nativa el motor de paquetes **pnpm** mediante su script de despliegue autónomo en Linux, utilizando su CLI de entorno integrado para levantar el entorno de ejecución Node LTS. Se reconstruyó la estructura de módulos de la SPA mediante enlaces duros simétricos de pnpm, optimizando drásticamente el espacio en disco y el tiempo de compilación para los entregables de la pesquera.
+
+### [22-06-2026] Modernización del Análisis Estático a ESLint 9 y Aprobación de Builds en pnpm
+- **Avance realizado:** Se resolvieron múltiples advertencias de obsolescencia (*deprecation warnings*) mediante la actualización controlada del motor de análisis estático a ESLint `9.1.1` y sus conectores complementarios para React.
+- **Optimización en Linux:** Se ejecutó el comando de políticas estrictas `pnpm approve-builds` para otorgar permisos de compilación al empaquetador subyacente `esbuild` en la arquitectura local. Con esto, se logró un entorno de desarrollo completamente optimizado, con descargas basadas en enlaces duros y una terminal libre de alertas críticas.
+
+### [22-06-2026] Congelamiento Estricto de Dependencias y Adaptación a Estándares Modernos
+- **Avance realizado:** Se eliminó el último operador dinámico (`^`) del archivo `package.json` correspondiente a la versión de Vite, fijando el entorno de compilación en una versión estática compatible con las reglas semánticas de ESLint 9.
+- **Validación del Manifiesto:** Se consolidó el archivo de configuración libre de advertencias por depreciación, delegando de forma íntegra la resolución del grafo de dependencias al motor de enlaces duros de pnpm.
+
+### [22-06-2026] Migración e Implementación del Sistema de Reglas Flat Config en ESLint 9
+- **Avance realizado:** Se estructuró el archivo maestro `eslint.config.js` bajo la nueva especificación estricta de configuración plana (*Flat Config*) obligatoria para la versión 9 del linter.
+- **Calidad de Código (R7):** Se acoplaron las reglas semánticas y de análisis estático para React 18, ganchos (*hooks*) y refresco modular, declarando el entorno global del navegador de forma explícita. Se purgaron archivos de extensiones obsoletas (`.eslintrc`), garantizando un escaneo automatizado óptimo y limpio de advertencias previas a la subida al repositorio de control de versiones.
+
+### [22-06-2026] Corrección de Índice de Paquetes en el Ecosistema de Linting
+- **Avance realizado:** Se solucionó un fallo de resolución en el comando `pnpm lint` (`ERR_PNPM_NO_MATCHING_VERSION`) provocado por un descalce en el identificador de la versión del plugin de hooks.
+- **Resolución de Dependencias (R6):** Se actualizó el manifiesto para apuntar a la versión estable `7.1.1` de `eslint-plugin-react-hooks` validada por el registro de npm. La instalación concluyó de manera exitosa bajo las políticas de seguridad de la cadena de suministro integradas en pnpm.
+
+### [22-06-2026] Migración de Directivas de Configuración a Archivo Estándar .npmrc (pnpm v11)
+- **Avance realizado:** Se eliminó la propiedad obsoleta `"pnpm"` del archivo de manifiesto `package.json` para cumplir con las especificaciones estrictas de la versión `11.8.0`.
+- **Estandarización del Entorno (R6):** Se trasladó la directiva de compilación segura al nuevo archivo `.npmrc` mediante el parámetro `only-built-dependencies[]=esbuild`. Esto eliminó los bloqueos de ejecución en cascada del estado de las dependencias, permitiendo una ejecución exitosa y limpia del análisis estático de código.
+
